@@ -3,22 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "watch": "babel --watch src --out-dir dist --source-maps inline --extensions \".ts,.tsx\" --copy-files",
-    "build": "babel src --out-dir dist --source-maps inline --extensions \".ts,.tsx\" --copy-files",
-    "type-check": "tsc"
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.40",
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-typescript": "^7.0.0-beta.40",
     "@types/faker": "^4.1.2",
-    "typescript": "^2.7.1"
+    "file-loader": "^1.1.6",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.1",
+    "webpack": "^3.11.0"
   },
   "dependencies": {
     "faker": "^4.1.0"
