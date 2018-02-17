@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.ts',
@@ -23,11 +24,29 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function(module) {
+        return is3rdParty(module);
+      }
+    }) 
+  ],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 };
+
+function is3rdParty(module) {
+  var context = module.context;
+
+  if (typeof context !== 'string') {
+    return false;
+  }
+
+  return context.indexOf('node_modules') !== -1;
+}
