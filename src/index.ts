@@ -13,13 +13,17 @@ const ptNameSegment = new X12Segment("NM1", "IL", "1",
 
 const streetAddressSegment = new X12Segment("N3", pt.Address.Street);
 const cityAddressSegment = new X12Segment("N4", 
-pt.Address.City, pt.Address.State, pt.Address.Zip);
+    pt.Address.City, pt.Address.State, pt.Address.Zip);
+
+const demographicSegment = new X12Segment("DMG", "D8",
+    pt.Demographic.DateOfBirth, pt.Demographic.Gender);
 
 
 const output: string =  [
         ptNameSegment,
         streetAddressSegment,
-        cityAddressSegment
+        cityAddressSegment,
+        demographicSegment
     ].join("<br>");
 
 const contentDiv = document.getElementById("content");
