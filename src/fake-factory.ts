@@ -40,6 +40,10 @@ export class FakeFactory {
         );
     }
 
+    createRecentD8(): string {
+        return this.formatD8(this.faker.date.past());
+    }
+
     private formatD8(date: Date): string {
         return date.toISOString().substring(0, 10).replace(/-/g, "");
     }

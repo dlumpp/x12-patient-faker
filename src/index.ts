@@ -18,12 +18,15 @@ const cityAddressSegment = new X12Segment("N4",
 const demographicSegment = new X12Segment("DMG", "D8",
     pt.Demographic.DateOfBirth, pt.Demographic.Gender);
 
+const serviceDateSegment = new X12Segment("DTP", "472", "D8",
+    fakeFac.createRecentD8());
 
 const output: string =  [
         ptNameSegment,
         streetAddressSegment,
         cityAddressSegment,
-        demographicSegment
+        demographicSegment,
+        serviceDateSegment
     ].join("<br>");
 
 const contentDiv = document.getElementById("content");
