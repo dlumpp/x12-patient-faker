@@ -1,5 +1,5 @@
 import './index.html';
-import * as faker from 'faker';
+import * as faker from 'faker/locale/en_US';
 import { FakeFactory } from './fake-factory';
 import { X12Segment } from './x12-segment';
 
