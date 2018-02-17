@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "serve": "webpack-dev-server"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -11,7 +14,8 @@
     "file-loader": "^1.1.6",
     "ts-loader": "^3.5.0",
     "typescript": "^2.7.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "faker": "^4.1.0"
