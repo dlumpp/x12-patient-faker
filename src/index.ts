@@ -5,10 +5,10 @@ import { X12Segment } from './x12-segment';
 
 const fakeFac = new FakeFactory(faker);
 
-const ptName = fakeFac.createPatientName();
-const ptNameSegment = new X12Segment("NM1",
-    ptName.LastName, ptName.FirstName, ptName.MiddleInitial, 
-    "MI", ptName.MemberId).toString();
+const pt = fakeFac.createPatient();
+const ptNameSegment = new X12Segment("NM1", "IL", "1",
+    pt.Name.LastName, pt.Name.FirstName, pt.Name.MiddleInitial, "", "",
+    "MI", pt.Name.MemberId).toString();
 
 const output: string = ptNameSegment;
 
