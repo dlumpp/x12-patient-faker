@@ -3,7 +3,9 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: {
+    main: './src/index.ts'    
+  }, 
   devtool: 'inline-source-map',
   devServer: {
       contentBase: './dist'
@@ -35,17 +37,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all'
-        }
-      }
-    }
   }
 };
