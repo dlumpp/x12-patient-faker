@@ -7,8 +7,7 @@ import * as ES6PromisePolyfill from 'es6-promise';
 ES6PromisePolyfill.polyfill();
 
 async function renderFakePatient(): Promise<string> {
-    const faker = await import(/* webpackChunkName: "faker" */ 'faker/locale/en_US');
-    const fakeFac = new FakeFactory(faker);
+    const fakeFac = new FakeFactory();
 
     const pt = fakeFac.createPatient();
     

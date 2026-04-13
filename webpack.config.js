@@ -8,7 +8,7 @@ module.exports = {
   }, 
   devtool: 'inline-source-map',
   devServer: {
-      contentBase: './dist'
+      static: './dist'
   },
   module: {
     rules: [

@@ -1,13 +1,14 @@
+import { faker } from '@faker-js/faker';
 import { Patient } from "./patient-models/patient";
 import { PatientName } from "./patient-models/patient-name";
 import { Address } from "./patient-models/address";
 import { Demographic } from "./patient-models/demographic";
 
 export class FakeFactory {
-    constructor(private faker: Faker.FakerStatic) { }
+    constructor() { }
 
     createPatient(): Patient {
-        const randomGender = <Gender>this.faker.random.number(1);
+        const randomGender = faker.number.int({ min: 0, max: 1 }) as Gender;
         return new Patient(
             this.createPatientName(randomGender),
             this.createAddress(),
@@ -16,32 +17,33 @@ export class FakeFactory {
     }
 
     createPatientName(gender: Gender): PatientName {
+        const genderStr = gender === Gender.Male ? 'male' : 'female';
         return new PatientName(
-            this.faker.name.firstName(gender),
-            this.faker.name.lastName(),
-            this.faker.name.firstName().substring(0, 1),
-            this.faker.finance.bic()
+            faker.person.firstName(genderStr),
+            faker.person.lastName(),
+            faker.person.firstName().substring(0, 1),
+            faker.finance.bic()
         );
     }
 
     createAddress(): Address {
         return new Address(
-            this.faker.address.streetAddress(),
-            this.faker.address.city(),
-            this.faker.address.stateAbbr(),
-            this.faker.address.zipCode()
+            faker.location.streetAddress(),
+            faker.location.city(),
+            faker.location.stateAbbr(),
+            faker.location.zipCode()
         );
     }
 
     createDemographic(gender: Gender): Demographic {
         return new Demographic (
-            this.formatD8(this.faker.date.past(90)),
+            this.formatD8(faker.date.past({ years: 90 })),
             Gender[gender].toString().substring(0, 1)
         );
     }
 
     createRecentD8(): string {
-        return this.formatD8(this.faker.date.past());
+        return this.formatD8(faker.date.past());
     }
 
     private formatD8(date: Date): string {
