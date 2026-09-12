@@ -30,7 +30,7 @@ export class FakeFactory {
         return new Address(
             faker.location.streetAddress(),
             faker.location.city(),
-            faker.location.stateAbbr(),
+            faker.location.state({ abbreviated: true }),
             faker.location.zipCode()
         );
     }
